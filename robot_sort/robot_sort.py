@@ -80,29 +80,70 @@ class SortingRobot:
         else:
             return 0
 
+    # Original solution for the sprint
+    # def sort(self):
+    #     """
+    #     Sort the robot's list.
+    #     """
+    #     # Fill this out
+    #     while not self.light_is_on():
+    #         # set light on for now.
+    #         self.set_light_on()
+    #         # while it can move right, swap the item and do so.
+    #         while self.can_move_right():
+    #             self.swap_item()
+    #             self.move_right()
+    #             # check the item in front of it. if it is smaller than what it is holding, swap it. then move left, and swap that. then move right. set light to on.
+    #             if self.compare_item() > 0:
+    #                 self.swap_item()
+    #                 self.move_left()
+    #                 self.swap_item()
+    #                 self.move_right()
+    #                 self.set_light_off()
+    #             else:
+    #             # if the item is not smaller, move left and swap that item. then move right.
+    #                 self.move_left()
+    #                 self.swap_item()
+    #                 self.move_right()
+    #         # if the light is off, and it can move left, do so.
+    #         if not self.light_is_on():
+    #             while self.can_move_left():
+    #                 self.move_left()
+    # Working on stretch solution
     def sort(self):
         """
         Sort the robot's list.
         """
         # Fill this out
+        # while it can move right, do it.
+        while self.can_move_right():
+            self.move_right()
+        # swap whatever is in front of it.
+        self.swap_item()
+        # then while it can move left, do so.
+        while self.can_move_left():
+            self.move_left()
         while not self.light_is_on():
-            self.set_light_on()
+            # while the light is off and it can move right, compare the item. if it's none, get out.
             while self.can_move_right():
-                self.swap_item()
+                if self.compare_item() is None:
+                    break
+                # if the item in the list is bigger than the one in the hand, swap them.
+                if self.compare_item() < 0:
+                    self.swap_item()\
+                # move right.
                 self.move_right()
-                if self.compare_item() > 0:
-                    self.swap_item()
-                    self.move_left()
-                    self.swap_item()
-                    self.move_right()
-                    self.set_light_off()
-                else:
-                    self.move_left()
-                    self.swap_item()
-                    self.move_right()
-            if not self.light_is_on():
+            # swap the item it has for what is in front of it
+            self.swap_item()
+            # if it can move left, do so and swap the item, then while it can move left, do so.
+            if self.can_move_left():
+                self.move_left()
+                self.swap_item()
                 while self.can_move_left():
                     self.move_left()
+            else:
+                # turn on the light to get out if nothing else does anything.
+                self.set_light_on()
 
     def set_light_on(self):
         """
