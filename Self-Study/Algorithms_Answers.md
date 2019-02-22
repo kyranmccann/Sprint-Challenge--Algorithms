@@ -1,3 +1,5 @@
+Add your answers to the Algorithms exercises here.
+
 
 ```
 a)  a = 0
