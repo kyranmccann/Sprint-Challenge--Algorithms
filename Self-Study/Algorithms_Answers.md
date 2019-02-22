@@ -1,6 +1,5 @@
 Add your answers to the Algorithms exercises here.
 
-
 ```
 a)  a = 0
     while (a < n * n * n):
@@ -41,3 +40,4 @@ runtime complexity of your solution.
 ```
 
 I would follow the procedure of a binary search - start at the middle floor, and drop my egg. If it breaks, I want something below me. If it doesn't I want something above me. Either way, I would move to the middle of that section and drop my egg. If it breaks, higher. If it doesn't lower. Eventually, I should be able to find the first floor that it breaks on.
+
